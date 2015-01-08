@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.wroc.pwr.ankieta.entity.User;
 import pl.wroc.pwr.ankieta.service.UserService;
-import pl.wroc.pwr.ankieta.service.WorkspaceService;
 
 @Controller
 @RequestMapping("/register")
@@ -21,9 +20,6 @@ public class RegisterController {
 
     @Autowired
     private UserService userService;
-    
-    @Autowired
-    private WorkspaceService workspaceService;
     
     @ModelAttribute("user")
     public User construct() {
