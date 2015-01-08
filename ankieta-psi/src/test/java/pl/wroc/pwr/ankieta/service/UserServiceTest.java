@@ -18,8 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.wroc.pwr.ankieta.entity.User;
 import pl.wroc.pwr.ankieta.repository.UserRepository;
-import pl.wroc.pwr.ankieta.service.UserService;
-import pl.wroc.pwr.ankieta.service.WorkspaceService;
 
 public class UserServiceTest {
 
@@ -33,9 +31,6 @@ public class UserServiceTest {
     
     @Mock
     private UserRepository userRepositoryMock;
-    
-    @Mock
-    private WorkspaceService workspaceServiceMock;
     
     @Before
     public void initMocks(){

@@ -4,12 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Proxy;
 import org.hibernate.validator.constraints.Email;
 
 import pl.wroc.pwr.ankieta.annotation.UniqueEmail;
@@ -30,13 +27,6 @@ public class User {
     
     @Size(min = 4, message = "Password must be at least 4 characters!")
     private String password;
-    
-    @ManyToOne
-    @JoinColumn(name="workspace_id")
-    private Workspace workspace;
-    
-    @Column
-    private UserType type;
 
     public String getEmail() {
         return email;
@@ -62,24 +52,8 @@ public class User {
         this.id = id;
     }
 
-    public Workspace getWorkspace() {
-        return workspace;
-    }
-
-    public void setWorkspace(Workspace workspace) {
-        this.workspace = workspace;
-    }
-    
-    public UserType getType() {
-        return type;
-    }
-
-    public void setType(UserType type) {
-        this.type = type;
-    }
-
     public String toString() {
-        return email + ", " + password + ", " + workspace;
+        return email + ", " + password;
     }
     
     

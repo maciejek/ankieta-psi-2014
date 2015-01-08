@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pl.wroc.pwr.ankieta.entity.User;
-import pl.wroc.pwr.ankieta.entity.Workspace;
 import pl.wroc.pwr.ankieta.repository.UserRepository;
 
 @Service
@@ -23,9 +22,6 @@ public class UserService {
     
     @Autowired
     private UserRepository userRepository;
-    
-    @Autowired
-    private WorkspaceService workspaceService;
     
     private BCryptPasswordEncoder encoder;
     
@@ -54,11 +50,7 @@ public class UserService {
     }
 
     public User registerUser(User user) {
-        Workspace workspace = new Workspace();
-        user.setWorkspace(workspace);
         user.setPassword(encryptPassword(user.getPassword()));
-        workspace.setScrumMaster(user);
-        workspaceService.save(workspace);
         return userRepository.save(user);
     }
     
