@@ -84,3 +84,12 @@ label.error {
 .my-header .glyphicon {
 	font-size: 18px;
 }
+
+.nav-pills>li>a, .nav-pills>li>a:hover, .nav-pills>li>a:focus {
+	line-height: 15px;
+	padding: 7px 15px;
+}
+
+.nav-subtitle {
+	font-size: 12px;
+}
