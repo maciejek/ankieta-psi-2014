@@ -8,15 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pl.wroc.pwr.ankieta.entity.User;
-import pl.wroc.pwr.ankieta.service.UserService;
+import pl.wroc.pwr.ankieta.entity.Uzytkownik;
+import pl.wroc.pwr.ankieta.service.UzytkownikService;
 
 @Controller
 public class UserController {
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserService userService;
+    private UzytkownikService userService;
     
     @RequestMapping("/users")
     public String users(Model model) {
@@ -24,15 +24,15 @@ public class UserController {
         return "users";
     }
     
-    @RequestMapping("/users/{id}")
-    public String detail(Model model, @PathVariable int id) {
-        model.addAttribute("user", userService.findOne(id));
+    @RequestMapping("/users/{email}")
+    public String detail(Model model, @PathVariable String email) {
+        model.addAttribute("user", userService.findOne(email));
         return "user-account";
     }
     
     @RequestMapping("/account")
     public String account(Model model) {
-        User currentUser = userService.getLoggedUser();
+        Uzytkownik currentUser = userService.getLoggedUser();
         model.addAttribute("user", currentUser);
         return "user-account";
     }

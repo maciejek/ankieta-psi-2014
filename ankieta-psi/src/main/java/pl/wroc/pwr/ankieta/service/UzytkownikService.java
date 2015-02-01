@@ -12,16 +12,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import pl.wroc.pwr.ankieta.entity.User;
-import pl.wroc.pwr.ankieta.repository.UserRepository;
+import pl.wroc.pwr.ankieta.entity.Uzytkownik;
+import pl.wroc.pwr.ankieta.repository.UzytkownikRepository;
 
 @Service
 @Transactional
 @PersistenceContext(type = PersistenceContextType.EXTENDED)
-public class UserService {
+public class UzytkownikService {
     
     @Autowired
-    private UserRepository userRepository;
+    private UzytkownikRepository uzytkownikRepository;
     
     private BCryptPasswordEncoder encoder;
     
@@ -32,32 +32,28 @@ public class UserService {
         return encoder;
     }
 
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<Uzytkownik> findAll() {
+        return uzytkownikRepository.findAll();
     }
 
-    public User findOne(int id) {
-        return userRepository.findOne(id);
-    }
-
-    public User findOne(String email) {
-        return userRepository.findByEmail(email);
+    public Uzytkownik findOne(String email) {
+        return uzytkownikRepository.findByEmail(email);
     }
     
-    public User getLoggedUser() {
+    public Uzytkownik getLoggedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return findOne(authentication.getName());
     }
 
-    public User registerUser(User user) {
-        user.setPassword(encryptPassword(user.getPassword()));
-        return userRepository.save(user);
+    public Uzytkownik registerUser(Uzytkownik user) {
+        user.setHaslo(encryptPassword(user.getHaslo()));
+        return uzytkownikRepository.save(user);
     }
     
-    public User updatePassword(String name, String password) {
-        User user = findOne(name);
-        user.setPassword(encryptPassword(password));
-        return userRepository.save(user);
+    public Uzytkownik updatePassword(String name, String password) {
+        Uzytkownik user = findOne(name);
+        user.setHaslo(encryptPassword(password));
+        return uzytkownikRepository.save(user);
     }
     
     public String encryptPassword(String plainPassword) {
@@ -65,8 +61,8 @@ public class UserService {
     }
     
     public Boolean isLoggedUserPasswordCorrect(String password) {
-        User loggedUser = getLoggedUser();
-        return getEncoder().matches(password, loggedUser.getPassword());
+        Uzytkownik loggedUser = getLoggedUser();
+        return getEncoder().matches(password, loggedUser.getHaslo());
     }
     
     public Boolean canChangePassword(String oldPassword, String newPassword, String confirmPassword) {

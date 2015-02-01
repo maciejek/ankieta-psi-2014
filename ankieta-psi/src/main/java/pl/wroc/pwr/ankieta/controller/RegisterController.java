@@ -11,20 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import pl.wroc.pwr.ankieta.entity.User;
-import pl.wroc.pwr.ankieta.service.UserService;
+import pl.wroc.pwr.ankieta.entity.Uzytkownik;
+import pl.wroc.pwr.ankieta.service.UzytkownikService;
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
 
     @Autowired
-    private UserService userService;
-    
-    @ModelAttribute("user")
-    public User construct() {
-        return new User();
-    }
+    private UzytkownikService userService;
     
     @RequestMapping
     public String showRegister() {
@@ -32,7 +27,7 @@ public class RegisterController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result) {
+    public String doRegister(@Valid @ModelAttribute("user") Uzytkownik user, BindingResult result) {
         if (result.hasErrors()) {
             return "user-register";
         }
