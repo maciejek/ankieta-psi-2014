@@ -5,12 +5,12 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import pl.wroc.pwr.ankieta.repository.UserRepository;
+import pl.wroc.pwr.ankieta.repository.UzytkownikRepository;
 
 public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String>{
 
     @Autowired
-    private UserRepository userRepository;
+    private UzytkownikRepository userRepository;
     
     @Override
     public void initialize(UniqueEmail constraintAnnotation) {
