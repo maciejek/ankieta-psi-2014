@@ -42,16 +42,27 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/"></spring:url>'>Home</a></li>
-					<security:authorize access="hasRole('ROLE_USER')"><li class="${current == 'account' ? 'active' : ''}"><a href="<spring:url value="/account.html" />">My account</a></li></security:authorize>
-					<security:authorize access="!isAuthenticated()"><li class="${current == 'register' ? 'active' : ''}"><a href="<spring:url value="/register.html" />">Register</a></li></security:authorize>
-					
+					<security:authorize access="hasRole('ROLE_USER')"><li class="${current == 'nowaAnkieta' ? 'active' : ''}"><a href="<spring:url value="/nowaAnkieta.html" />">Nowa ankieta</a></li></security:authorize>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<!-- <li class="active"><a href="./">Default <span
-							class="sr-only">(current)</span></a></li> -->
-					<security:authorize access="!isAuthenticated()"><li class="${current == 'login' ? 'active' : ''}"><a href="<spring:url value="/login.html" />">Login</a></li></security:authorize>
-					<security:authorize access="isAuthenticated()"><li><a href="<spring:url value="/logout"/>">Logout</a></li></security:authorize>
+				<ul class="nav navbar-nav navbar-right my-header">
+					<security:authorize access="!isAuthenticated()"><li><a href="<spring:url value="/login.html" />">Login</a></li></security:authorize>
+					<security:authorize access="isAuthenticated()">
+						<li>
+							<span class="header-text">
+								Zalogowany jako: <security:authentication property="principal.username"></security:authentication>
+							</span>
+						</li>
+						<li>
+							<span class="header-text">
+								<span class="glyphicon glyphicon-user"></span>
+							</span>
+						</li>
+						<li>
+							<a href="<spring:url value="/logout"/>">
+								<span class="glyphicon glyphicon-off"></span>
+							</a>
+						</li>
+					</security:authorize>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

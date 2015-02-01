@@ -1,6 +1,7 @@
 package pl.wroc.pwr.ankieta.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import pl.wroc.pwr.ankieta.model.AnkietaModel;
 import pl.wroc.pwr.ankieta.service.AnkietaService;
@@ -25,8 +26,9 @@ public class NowaAnkietaController {
 
 	AnkietaService ankietaService;
 
+	@RequestMapping("/nowaAnkieta")
 	public String loadKrok1(AnkietaModel model1) {
-	    return "";
+	    return "nowaAnkieta";
 	}
 
 	public String loadKrok2(AnkietaModel model2) {

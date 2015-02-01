@@ -3,8 +3,4 @@
 
 <%@ include file="../layout/taglib.jsp"%>
 
-<h2>Welcome!</h2>
-
-<p>This is your account page.</p>
-
-<br/>
+<h2>Nowa ankieta</h2>
