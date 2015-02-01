@@ -28,7 +28,7 @@
 	<div class="container">
 
 		<!-- Static navbar -->
-		<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -42,6 +42,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
+					<li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/"></spring:url>'>Home</a></li>
 					<security:authorize access="hasRole('ROLE_USER')"><li class="${current == 'nowaAnkieta' ? 'active' : ''}"><a href="<spring:url value="/nowaAnkieta.html" />">Nowa ankieta</a></li></security:authorize>
 				</ul>
 				<ul class="nav navbar-nav navbar-right my-header">
