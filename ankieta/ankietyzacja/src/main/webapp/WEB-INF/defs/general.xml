@@ -21,4 +21,14 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/NowaAnkietaPage.jsp" />
 		<put-attribute name="current" value="nowaAnkieta"></put-attribute>
 	</definition>
+	<definition name="wypelnianieListaAnkiet" extends="common">
+		<put-attribute name="title" value="Wybor ankiety" />
+		<put-attribute name="body" value="/WEB-INF/jsp/WypelnianieListaAnkiet.jsp" />
+		<put-attribute name="current" value="wypelnianieListaAnkiet"></put-attribute>
+	</definition>
+	<definition name="wypelnij" extends="common">
+		<put-attribute name="title" value="Wypelnianie ankiety" />
+		<put-attribute name="body" value="/WEB-INF/jsp/WypelnianieAnkietyPage.jsp" />
+		<put-attribute name="current" value="wypelnij"></put-attribute>
+	</definition>
 </tiles-definitions>
