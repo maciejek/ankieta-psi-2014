@@ -53,4 +53,80 @@ public class Ankieta {
 
 	private String komentarzDoWyniku;
 
+    public Audytor getAudytor() {
+        return audytor;
+    }
+
+    public void setAudytor(Audytor audytor) {
+        this.audytor = audytor;
+    }
+
+    public Collection<Pytanie> getPytania() {
+        return Pytania;
+    }
+
+    public void setPytania(Collection<Pytanie> pytania) {
+        Pytania = pytania;
+    }
+
+    public Collection<Ankietowany> getGrupaAnkietowanych() {
+        return grupaAnkietowanych;
+    }
+
+    public void setGrupaAnkietowanych(Collection<Ankietowany> grupaAnkietowanych) {
+        this.grupaAnkietowanych = grupaAnkietowanych;
+    }
+
+    public Zajecia getZajêcia() {
+        return zajêcia;
+    }
+
+    public void setZajêcia(Zajecia zajêcia) {
+        this.zajêcia = zajêcia;
+    }
+
+    public Collection<Uzytkownik> getZainteresowani() {
+        return zainteresowani;
+    }
+
+    public void setZainteresowani(Collection<Uzytkownik> zainteresowani) {
+        this.zainteresowani = zainteresowani;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getTytul() {
+        return tytul;
+    }
+
+    public void setTytul(String tytul) {
+        this.tytul = tytul;
+    }
+
+    public Date getTerminRozpoczecia() {
+        return terminRozpoczecia;
+    }
+
+    public void setTerminRozpoczecia(Date terminRozpoczecia) {
+        this.terminRozpoczecia = terminRozpoczecia;
+    }
+
+    public int getTerminZakonczenia() {
+        return terminZakonczenia;
+    }
+
+    public void setTerminZakonczenia(int terminZakonczenia) {
+        this.terminZakonczenia = terminZakonczenia;
+    }
+
+    public String getKomentarzDoWyniku() {
+        return komentarzDoWyniku;
+    }
+
+    public void setKomentarzDoWyniku(String komentarzDoWyniku) {
+        this.komentarzDoWyniku = komentarzDoWyniku;
+    }
+
 }

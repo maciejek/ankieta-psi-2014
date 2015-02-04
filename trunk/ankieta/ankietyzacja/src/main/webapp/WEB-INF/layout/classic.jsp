@@ -44,6 +44,7 @@
 				<ul class="nav navbar-nav">
 					<li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/"></spring:url>'>Home</a></li>
 					<security:authorize access="hasRole('ROLE_USER')"><li class="${current == 'nowaAnkieta' ? 'active' : ''}"><a href="<spring:url value="/nowaAnkieta.html" />">Nowa ankieta</a></li></security:authorize>
+					<security:authorize access="hasRole('ROLE_USER')"><li class="${current == 'wypelnianieAnkiety' ? 'active' : ''}"><a href="<spring:url value="/wypelnianieListaAnkiet.html" />">Wypelnianie ankiety</a></li></security:authorize>
 				</ul>
 				<ul class="nav navbar-nav navbar-right my-header">
 					<security:authorize access="!isAuthenticated()"><li><a href="<spring:url value="/login.html" />">Login</a></li></security:authorize>

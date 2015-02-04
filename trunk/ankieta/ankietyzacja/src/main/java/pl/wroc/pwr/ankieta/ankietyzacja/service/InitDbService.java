@@ -1,6 +1,7 @@
 package pl.wroc.pwr.ankieta.ankietyzacja.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.PersistenceContext;
@@ -10,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Audytor;
 import pl.wroc.pwr.ankieta.ankietaService.entity.DzienTygodnia;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Kurs;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Nauczyciel;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zajecia;
+import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AudytorRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.KursRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.NauczycielRepository;
@@ -39,13 +42,16 @@ public class InitDbService {
     
     @Autowired
     private KursRepository kursRepository;
+    
+    @Autowired
+    private AnkietaRepository ankietaRepository;
 
     @PostConstruct
     public void init() {
         
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         
-        if (uzytkownikRepository.findByEmail("jan.kowalski@pwr.edu.pl") == null) {
+       // if (uzytkownikRepository.findByEmail("jan.kowalski@pwr.edu.pl") == null) {
         
             Audytor audytor1 = new Audytor();
             audytor1.setEmail("jan.kowalski@pwr.edu.pl");
@@ -145,8 +151,15 @@ public class InitDbService {
             zajeciaKursu2.add(zajecia6);
             kurs2.setZajêcia(zajeciaKursu2);
             kursRepository.save(kurs2);
-        
-        }
+            
+            Ankieta ankieta1 = new Ankieta();
+            ankieta1.setAudytor(audytor1);
+            ankieta1.setTerminRozpoczecia(new Date());
+            ankieta1.setTerminZakonczenia(12);
+            ankieta1.setTytul("tytul roboczy");
+            ankieta1.setZajêcia(zajecia1);
+            ankietaRepository.save(ankieta1);
+       // }
         
     }
 }
