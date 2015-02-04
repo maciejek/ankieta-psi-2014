@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ankieta-psi">
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Uzytkownik</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Nauczyciel</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Zajecia</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Kurs</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Ankietowany</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Audytor</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.AnkietaAnkietowanego</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Odpowiedz</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.OdpowiedzPytanieOtwarte</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Otwarte</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Synonim</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Szablon</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.WybranaOdpowiedz</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Zamknięte</class>
+		<properties>
+		    <property name="hibernate.archive.autodetection" value="class, hbm"/>
+			<property name="hibernate.connection.charSet" value="UTF-8"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+		</properties>
+	</persistence-unit>
+</persistence>
