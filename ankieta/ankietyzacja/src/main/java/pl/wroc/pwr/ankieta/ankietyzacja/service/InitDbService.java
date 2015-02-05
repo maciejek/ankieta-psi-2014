@@ -18,7 +18,9 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.Kurs;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Nauczyciel;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Otwarte;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
+import pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zajecia;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AudytorRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.KursRepository;
@@ -161,21 +163,31 @@ public class InitDbService {
             Ankieta ankieta1 = new Ankieta();
             ankieta1.setAudytor(audytor1);
             ankieta1.setTerminRozpoczecia(new Date());
-            ankieta1.setTerminZakonczenia(12);
+            ankieta1.setTerminZakonczenia(new Date());
             ankieta1.setTytul("tytul roboczy");
             ankieta1.setZajêcia(zajecia1);
           //  ankietaRepository.save(ankieta1);
 
             //TODO:MACIEK - CO Z TYM?
-            Pytanie pytanie = new Otwarte();
-            pytanie.setTresc("tresc1");
-            pytanie.setAnkieta(ankieta1);//?
-            ArrayList<Pytanie> pytania1 = new ArrayList<Pytanie>();
-            pytania1.add(pytanie);
-            ankieta1.setPytania(pytania1);
+            Pytanie pytanie1 = new Otwarte();
+            pytanie1.setTresc("tresc1");
+            pytanie1.setAnkieta(ankieta1);
+            
+            Zamkniête pytanie2 = new Zamkniête();
+            pytanie2.setTresc("tresc2");
+            pytanie2.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie2, false, "wariant1"));
+            pytanie2.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie2, false, "wariant2"));
+            pytanie2.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie2, false, "wariant3"));
+            pytanie2.setAnkieta(ankieta1);
+            
+            ArrayList<Pytanie> pytania = new ArrayList<Pytanie>();
+            pytania.add(pytanie1);
+            pytania.add(pytanie2);
+            ankieta1.setPytania(pytania);
             
             ankietaRepository.save(ankieta1);
-            pytanieRepository.save(pytanie);
+            pytanieRepository.save(pytanie1);
+            pytanieRepository.save(pytanie2);
             };
        // }
         
