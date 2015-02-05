@@ -16,11 +16,14 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.Audytor;
 import pl.wroc.pwr.ankieta.ankietaService.entity.DzienTygodnia;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Kurs;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Nauczyciel;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Otwarte;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zajecia;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AudytorRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.KursRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.NauczycielRepository;
+import pl.wroc.pwr.ankieta.ankietaService.repository.PytanieRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.UzytkownikRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.ZajeciaRepository;
 
@@ -45,6 +48,9 @@ public class InitDbService {
     
     @Autowired
     private AnkietaRepository ankietaRepository;
+    
+    @Autowired
+    private PytanieRepository pytanieRepository;
 
     @PostConstruct
     public void init() {
@@ -158,8 +164,20 @@ public class InitDbService {
             ankieta1.setTerminZakonczenia(12);
             ankieta1.setTytul("tytul roboczy");
             ankieta1.setZajêcia(zajecia1);
+          //  ankietaRepository.save(ankieta1);
+
+            //TODO:MACIEK - CO Z TYM?
+            Pytanie pytanie = new Otwarte();
+            pytanie.setTresc("tresc1");
+            pytanie.setAnkieta(ankieta1);//?
+            ArrayList<Pytanie> pytania1 = new ArrayList<Pytanie>();
+            pytania1.add(pytanie);
+            ankieta1.setPytania(pytania1);
+            
             ankietaRepository.save(ankieta1);
+            pytanieRepository.save(pytanie);
+            };
        // }
         
-    }
+    
 }
