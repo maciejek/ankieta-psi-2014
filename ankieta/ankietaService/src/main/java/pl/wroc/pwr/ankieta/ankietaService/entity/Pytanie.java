@@ -19,7 +19,7 @@ public abstract class Pytanie {
 	private Ankieta ankieta;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "szablon_id", nullable = false)
+    @JoinColumn(name = "szablon_id", nullable = true)
 	private Szablon szablon;
 
 	@OneToMany(mappedBy = "pytanie", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -30,5 +30,21 @@ public abstract class Pytanie {
 	private Integer id;
 	
 	private String tresc;
+
+    public Ankieta getAnkieta() {
+        return ankieta;
+    }
+
+    public void setAnkieta(Ankieta ankieta) {
+        this.ankieta = ankieta;
+    }
+
+    public String getTresc() {
+        return tresc;
+    }
+
+    public void setTresc(String tresc) {
+        this.tresc = tresc;
+    }
 
 }

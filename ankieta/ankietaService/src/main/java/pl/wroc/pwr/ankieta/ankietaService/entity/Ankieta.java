@@ -20,8 +20,8 @@ public class Ankieta {
     @JoinColumn(name = "audytor_id", nullable = false)
 	private Audytor audytor;
 
-    @OneToMany(mappedBy = "szablon", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Collection<Pytanie> Pytania;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Collection<Pytanie> pytania;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "Ankieta_Ankietowany", joinColumns = { 
@@ -62,11 +62,11 @@ public class Ankieta {
     }
 
     public Collection<Pytanie> getPytania() {
-        return Pytania;
+        return pytania;
     }
 
     public void setPytania(Collection<Pytanie> pytania) {
-        Pytania = pytania;
+        this.pytania = pytania;
     }
 
     public Collection<Ankietowany> getGrupaAnkietowanych() {

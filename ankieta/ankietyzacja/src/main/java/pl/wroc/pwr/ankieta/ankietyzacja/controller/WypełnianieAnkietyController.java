@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.WypelnianieAnkietyModel;
 import pl.wroc.pwr.ankieta.ankietyzacja.service.AnkietaAnkietowanegoService;
 import pl.wroc.pwr.ankieta.ankietyzacja.service.AnkietaService;
@@ -19,8 +20,10 @@ public class Wype³nianieAnkietyController {
     @Autowired
 	AnkietaAnkietowanegoService ankietaAnkietowanegoService;
 
-    @RequestMapping("/wypelnianieListaAnkiet/{id}")
+    @RequestMapping("/wypelnianieListaAnkiet/{idAnkiety}")
 	public String loadAnkieta(Model model, @PathVariable int idAnkiety) {
+        Ankieta a = ankietaService.findAnkieta(idAnkiety);
+        System.out.println((ankietaService.findAnkieta(idAnkiety)).getPytania());
         model.addAttribute("ankieta", ankietaService.findAnkieta(idAnkiety));
 		return "wypelnij";
 	}
