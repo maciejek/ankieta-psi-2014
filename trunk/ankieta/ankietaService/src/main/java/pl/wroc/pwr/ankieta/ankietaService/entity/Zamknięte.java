@@ -11,6 +11,19 @@ import javax.persistence.OneToMany;
 public class Zamkniête extends Pytanie {
 
     @OneToMany(mappedBy = "pytanieZamkniete", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Collection<WariantOdpowiedzi> wariantyOdpowiedzi;
+	private Collection<WariantOdpowiedzi> wariantyOdpowiedzi = new LinkedList<WariantOdpowiedzi>();
+    
+    public void addWariantOdpowiedzi(WariantOdpowiedzi wariantOdpowiedzi) {
+        wariantyOdpowiedzi.add(wariantOdpowiedzi);
+    }
+
+    public Collection<WariantOdpowiedzi> getWariantyOdpowiedzi() {
+        return wariantyOdpowiedzi;
+    }
+
+    public void setWariantyOdpowiedzi(
+            Collection<WariantOdpowiedzi> wariantyOdpowiedzi) {
+        this.wariantyOdpowiedzi = wariantyOdpowiedzi;
+    }
 
 }

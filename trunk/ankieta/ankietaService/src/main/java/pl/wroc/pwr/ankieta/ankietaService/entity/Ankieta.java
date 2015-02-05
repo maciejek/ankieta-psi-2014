@@ -49,7 +49,7 @@ public class Ankieta {
 
 	private Date terminRozpoczecia;
 
-	private int terminZakonczenia;
+	private Date terminZakonczenia;
 
 	private String komentarzDoWyniku;
 
@@ -113,11 +113,11 @@ public class Ankieta {
         this.terminRozpoczecia = terminRozpoczecia;
     }
 
-    public int getTerminZakonczenia() {
+    public Date getTerminZakonczenia() {
         return terminZakonczenia;
     }
 
-    public void setTerminZakonczenia(int terminZakonczenia) {
+    public void setTerminZakonczenia(Date terminZakonczenia) {
         this.terminZakonczenia = terminZakonczenia;
     }
 
