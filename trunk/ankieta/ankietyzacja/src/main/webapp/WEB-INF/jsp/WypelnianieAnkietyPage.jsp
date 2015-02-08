@@ -25,15 +25,15 @@
 							<label><input type="radio" name="wariant-${pytanieCount}" onclick="wariantSelected(this)" value="${wariant.tresc}" required>${wariant.tresc}</input></label>
 						</div>
 					</c:forEach>
-					<form:input type="hidden" path="odpowiedziOtwarte" id="wybrane-wariant-${pytanieCount}" ></form:input>
+					<form:input type="hidden" path="odpowiedzi" id="wybrane-wariant-${pytanieCount}" ></form:input>
 				</c:catch>
 				<c:if test="${not empty exception}">
-					<textarea name="odpowiedziOtwarte" class="form-control" required ></textarea>
+					<textarea name="odpowiedzi" class="form-control" required></textarea>
 				</c:if>
 			</div>
 		<c:set var="pytanieCount" value="${pytanieCount + 1}" scope="page"/>
 	</c:forEach>
-	<textarea type="hidden" id="ankietaId" name="ankietaId" class="form-control">${ankieta.id}</textarea>
+	<textarea type="hidden" id="ankietaId" name="ankietaId" class="form-control" style="display:none;">${ankieta.id}</textarea>
 	<p class="text-right">
 		<input class="btn btn-default" type="submit" value="Zakończ i wyślij ankietę">
 	</p>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta;
 import pl.wroc.pwr.ankieta.ankietaService.entity.AnkietaAnkietowanego;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Ankietowany;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Uzytkownik;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.WypelnianieAnkietyModel;
 import pl.wroc.pwr.ankieta.ankietyzacja.service.AnkietaAnkietowanegoService;
@@ -44,23 +45,29 @@ public class Wype³nianieAnkietyController {
     
     @RequestMapping("/wypelnianieListaAnkiet")
     public String wypelnianieAnkiety(Model model) {
-        model.addAttribute("ankiety", ankietaService.findAll());
+        model.addAttribute("ankiety", ankietaService.findAllAvailableForAnkietowany((Ankietowany)uzytkownikService.getLoggedUser()));
         return "wypelnianieListaAnkiet";
     }
     
     @RequestMapping(value="/wypelnianieListaAnkiet/ankietaWypelniona", method = RequestMethod.POST)
     public String wypelnianieAnkiety(@Valid @ModelAttribute("wypelniona") WypelnianieAnkietyModel wypelniona, BindingResult result) {
-        System.out.println("hola!");
         System.out.println(wypelniona);
         System.out.println(wypelniona.getAnkietaId());
         Ankieta ankieta = ankietaService.findAnkieta(wypelniona.getAnkietaId());
-        Uzytkownik ankietowany = uzytkownikService.getLoggedUser();
-        System.out.println("wypControler: " + ankietowany);
-        AnkietaAnkietowanego aa = ankietaAnkietowanegoService.createAnkietaAnkietowanego(wypelniona, ankieta, ankietowany);
-        ankietaAnkietowanegoService.save(aa);
-        
-        return "wypelnij";
-        
+        Ankietowany ankietowany = (Ankietowany)uzytkownikService.getLoggedUser();
+        AnkietaAnkietowanego ankietaAnkietowanego = ankietaAnkietowanegoService.createAnkietaAnkietowanego(wypelniona, ankieta, ankietowany);
+        ankietaAnkietowanego = ankietaAnkietowanegoService.save(ankietaAnkietowanego);
+        ankietowany.addAnkietaAnkietowanego(ankietaAnkietowanego);
+        //return "redirect:/wypelnianieListaAnkiet.html?success=true";
+       // return "/wypelnianieListaAnkiet2/"+ankietaAnkietowanego.getId();
+        return "redirect:/wypelnianieListaAnkiet2/"+ankietaAnkietowanego.getId()+".html";
+
+    }
+    
+    @RequestMapping("/wypelnianieListaAnkiet2/{idAnkietyAnkietowanego}")
+    public String wypelnianieDone(Model model, @PathVariable int idAnkietyAnkietowanego) {
+        model.addAttribute("ankietaAnkietowanego", ankietaAnkietowanegoService.findAnkietaAnkietowanego(idAnkietyAnkietowanego));
+        return "redirect:/wypelnianieListaAnkiet.html?success=true";
     }
 
 	public String saveAnkietaAnkietowanego(WypelnianieAnkietyModel model) {
