@@ -71,11 +71,6 @@ public class InitDbService {
             audytor1.setHaslo(encoder.encode("qaz"));
             audytorRepository.save(audytor1);
             
-            Ankietowany ankietowany1 = new Ankietowany();
-            ankietowany1.setEmail("ankietowany@pwr.wroc.pl");
-            ankietowany1.setHaslo(encoder.encode("ankietowany"));
-            ankietowanyRepository.save(ankietowany1);
-            
             Nauczyciel nauczyciel1 = new Nauczyciel();
             nauczyciel1.setEmail("bogumila.hnatkowska@pwr.edu.pl");
             nauczyciel1.setHaslo(encoder.encode("12345"));
@@ -172,10 +167,11 @@ public class InitDbService {
             
             Ankieta ankieta1 = new Ankieta();
             ankieta1.setAudytor(audytor1);
-            ankieta1.setTerminRozpoczecia(new Date());
-            ankieta1.setTerminZakonczenia(new Date());
+            ankieta1.setTerminRozpoczecia(new Date(1391872980000L));
+            ankieta1.setTerminZakonczenia(new Date(1523408800000L)); //2016-02-08
             ankieta1.setTytul("tytul roboczy");
             ankieta1.setZajêcia(zajecia1);
+            
           //  ankietaRepository.save(ankieta1);
 
             //TODO:MACIEK - CO Z TYM?
@@ -208,9 +204,23 @@ public class InitDbService {
             pytania.add(pytanie4);
             ankieta1.setPytania(pytania);
             
+            ArrayList<Ankieta> ankiety = new ArrayList<Ankieta>();
+            ankiety.add(ankieta1);
+            
+            Ankietowany ankietowany1 = new Ankietowany();
+            ankietowany1.setEmail("ankietowany@pwr.wroc.pl");
+            ankietowany1.setHaslo(encoder.encode("ankietowany"));
+            ankietowany1.setAnkiety(ankiety);
+
+            
+            ArrayList<Ankietowany> grupaAnkietowanych = new ArrayList<Ankietowany>();
+            grupaAnkietowanych.add(ankietowany1);
+            ankieta1.setGrupaAnkietowanych(grupaAnkietowanych);
+            
             ankietaRepository.save(ankieta1);
             pytanieRepository.save(pytanie1);
             pytanieRepository.save(pytanie2);
+            ankietowanyRepository.save(ankietowany1);
             };
        // }
         

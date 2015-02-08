@@ -6,9 +6,10 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security.xsd">
 	<http use-expressions="true">
-		<intercept-url pattern="/users**" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/users/**" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/users**" access="hasAnyRole('Audytor','Nauczyciel', 'Ankietowany')" />
+		<intercept-url pattern="/users/**" access="hasAnyRole('Audytor','Nauczyciel', 'Ankietowany')" />
+		<intercept-url pattern="/account**" access="hasAnyRole('Audytor','Nauczyciel', 'Ankietowany')" />
+		<intercept-url pattern="/wypelnianieListaAnkiet**" access="hasRole('Ankietowany')" />
 		<form-login login-page="/login.html" />
 		<logout logout-url="/logout" />
 	</http>
@@ -16,7 +17,7 @@
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
-				authorities-by-username-query="select Uzytkownik.email, 'ROLE_USER' from Uzytkownik where Uzytkownik.email = ?"
+				authorities-by-username-query="select Uzytkownik.email, Uzytkownik.dtype from Uzytkownik where Uzytkownik.email = ?"
 				users-by-username-query="select email, haslo, 1 from Uzytkownik where email = ?" />
 			<password-encoder hash="bcrypt"></password-encoder>
 		</authentication-provider>

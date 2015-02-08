@@ -6,10 +6,17 @@
 <table class="table table-bordered table-hover">
 	<thead>
 	<tr>
-	<th>ankieta</th>
+	<th>Ankiety dostępne do wypełnienia</th>
 	</tr>
 	</thead>
 	<tbody>
+	<c:if test="${param.success eq true}">
+		<div class="alert alert-success alert-dismissible fade in" role="alert">
+	     	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+	     	Dziękujemy za wypełnienie ankiety ${ankietaAnkietowanego.id} !
+	    </div>
+	</c:if>
+	
 		<c:forEach items="${ankiety}" var="ankieta">
 			<tr>
 				<td>

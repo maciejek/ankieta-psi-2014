@@ -1,6 +1,8 @@
 package pl.wroc.pwr.ankieta.ankietyzacja.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.OdpowiedzPytanieOtwarte;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Otwarte;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Uzytkownik;
+import pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi;
+import pl.wroc.pwr.ankieta.ankietaService.entity.WybranaOdpowiedz;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaAnkietowanegoRepository;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.WypelnianieAnkietyModel;
 
@@ -23,12 +28,11 @@ public class AnkietaAnkietowanegoService {
     @Autowired
 	AnkietaAnkietowanegoRepository ankietaAnkietowanegoRepository;
 
-	public AnkietaAnkietowanego createAnkietaAnkietowanego(WypelnianieAnkietyModel model, Ankieta ankieta, Uzytkownik ankietowany) {
+	public AnkietaAnkietowanego createAnkietaAnkietowanego(WypelnianieAnkietyModel model, Ankieta ankieta, Ankietowany ankietowany) {
 	    AnkietaAnkietowanego ankietaAnkietowanego = new AnkietaAnkietowanego();
 	    ankietaAnkietowanego.setAnkieta(ankieta);
-	    ankietaAnkietowanego.setAnkietowany((Ankietowany)ankietowany);
-	    System.out.println((Ankietowany)ankietowany);
-	    ankietaAnkietowanego.setOdpowiedzi(convertOdpowiedziFromViewToListOfOdpowiedz(model.getOdpowiedziOtwarte(), ankieta.getPytania()));
+	    ankietaAnkietowanego.setAnkietowany(ankietowany);
+	    ankietaAnkietowanego.setOdpowiedzi(convertOdpowiedziFromViewToListOfOdpowiedz(model.getOdpowiedzi(), ankieta.getPytania()));
 	    return ankietaAnkietowanego;
 	}
 
@@ -40,13 +44,34 @@ public class AnkietaAnkietowanegoService {
 	private List<Odpowiedz> convertOdpowiedziFromViewToListOfOdpowiedz(List<String> odpowiedzi, List<Pytanie> pytania) {
 	    List<Odpowiedz> result = new ArrayList<Odpowiedz>();
 	    for(int i = 0; i<pytania.size(); i++) {
+	        Odpowiedz odpowiedz = null;
 	        if(pytania.get(i) instanceof Otwarte) {
-	            OdpowiedzPytanieOtwarte odpowiedz = new OdpowiedzPytanieOtwarte(odpowiedzi.get(i));
-	            odpowiedz.setPytanie(pytania.get(i));
-	            result.add(odpowiedz);
+	            odpowiedz = new OdpowiedzPytanieOtwarte(odpowiedzi.get(i));
 	        }
+	        else {
+	            Zamkniête zamkniete = (Zamkniête)pytania.get(i);
+	            WariantOdpowiedzi wybranyWariant = getWariantWithTresc(zamkniete.getWariantyOdpowiedzi(), odpowiedzi.get(i));
+	            odpowiedz = new WybranaOdpowiedz(wybranyWariant);
+	        }
+            odpowiedz.setPytanie(pytania.get(i));
+            result.add(odpowiedz);
 	    }
 	    return result;
+	}
+	
+	private WariantOdpowiedzi getWariantWithTresc(Collection<WariantOdpowiedzi> warianty, String tresc) {
+	    Iterator<WariantOdpowiedzi> wariantyIterator = warianty.iterator();
+	    while(wariantyIterator.hasNext()) {
+	        WariantOdpowiedzi wariant = wariantyIterator.next();
+	        if(wariant.equals(tresc)) {
+	            return wariant;
+	        }
+	    }
+	    return null;
+	}
+	
+	public AnkietaAnkietowanego findAnkietaAnkietowanego(int id) {
+	    return ankietaAnkietowanegoRepository.findOne(id);
 	}
 
 }
