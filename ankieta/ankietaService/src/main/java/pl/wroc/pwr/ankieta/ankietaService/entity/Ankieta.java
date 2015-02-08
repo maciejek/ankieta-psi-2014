@@ -21,7 +21,7 @@ public class Ankieta {
 	private Audytor audytor;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Collection<Pytanie> pytania;
+	private List<Pytanie> pytania;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "Ankieta_Ankietowany", joinColumns = { 
@@ -40,6 +40,9 @@ public class Ankieta {
             inverseJoinColumns = { @JoinColumn(name = "zainteresowany_id", 
                     nullable = false, updatable = false) })
 	private Collection<Uzytkownik> zainteresowani;
+	
+	@OneToMany(targetEntity=AnkietaAnkietowanego.class, mappedBy="ankieta", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private Collection<AnkietaAnkietowanego> ankietyAnkietowanych;
 
 	@Id
     @GeneratedValue
@@ -61,11 +64,11 @@ public class Ankieta {
         this.audytor = audytor;
     }
 
-    public Collection<Pytanie> getPytania() {
+    public List<Pytanie> getPytania() {
         return pytania;
     }
 
-    public void setPytania(Collection<Pytanie> pytania) {
+    public void setPytania(List<Pytanie> pytania) {
         this.pytania = pytania;
     }
 
@@ -127,6 +130,15 @@ public class Ankieta {
 
     public void setKomentarzDoWyniku(String komentarzDoWyniku) {
         this.komentarzDoWyniku = komentarzDoWyniku;
+    }
+
+    public Collection<AnkietaAnkietowanego> getAnkietyAnkietowanych() {
+        return ankietyAnkietowanych;
+    }
+
+    public void setAnkietyAnkietowanych(
+            Collection<AnkietaAnkietowanego> ankietyAnkietowanych) {
+        this.ankietyAnkietowanych = ankietyAnkietowanych;
     }
 
 }

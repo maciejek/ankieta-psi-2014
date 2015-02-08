@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta;
+import pl.wroc.pwr.ankieta.ankietaService.entity.AnkietaAnkietowanego;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Uzytkownik;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.WypelnianieAnkietyModel;
 import pl.wroc.pwr.ankieta.ankietyzacja.service.AnkietaAnkietowanegoService;
 import pl.wroc.pwr.ankieta.ankietyzacja.service.AnkietaService;
+import pl.wroc.pwr.ankieta.ankietyzacja.service.UzytkownikService;
 
 @Controller
 public class Wype³nianieAnkietyController {
@@ -23,6 +27,9 @@ public class Wype³nianieAnkietyController {
 
     @Autowired
 	AnkietaAnkietowanegoService ankietaAnkietowanegoService;
+    
+    @Autowired
+    UzytkownikService uzytkownikService;
     
     @ModelAttribute("wypelniona")
     public WypelnianieAnkietyModel construct() {
@@ -45,7 +52,15 @@ public class Wype³nianieAnkietyController {
     public String wypelnianieAnkiety(@Valid @ModelAttribute("wypelniona") WypelnianieAnkietyModel wypelniona, BindingResult result) {
         System.out.println("hola!");
         System.out.println(wypelniona);
+        System.out.println(wypelniona.getAnkietaId());
+        Ankieta ankieta = ankietaService.findAnkieta(wypelniona.getAnkietaId());
+        Uzytkownik ankietowany = uzytkownikService.getLoggedUser();
+        System.out.println("wypControler: " + ankietowany);
+        AnkietaAnkietowanego aa = ankietaAnkietowanegoService.createAnkietaAnkietowanego(wypelniona, ankieta, ankietowany);
+        ankietaAnkietowanegoService.save(aa);
+        
         return "wypelnij";
+        
     }
 
 	public String saveAnkietaAnkietowanego(WypelnianieAnkietyModel model) {
