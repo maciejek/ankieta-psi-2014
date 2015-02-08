@@ -46,5 +46,9 @@ public abstract class Pytanie {
     public void setTresc(String tresc) {
         this.tresc = tresc;
     }
+    
+    public String toString() {
+        return tresc;
+    }
 
 }

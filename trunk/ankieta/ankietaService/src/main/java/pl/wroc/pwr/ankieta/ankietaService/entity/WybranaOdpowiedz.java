@@ -26,5 +26,9 @@ public class WybranaOdpowiedz extends Odpowiedz {
     public void setWariantOdpowiedzi(WariantOdpowiedzi wariantOdpowiedzi) {
         this.wariantOdpowiedzi = wariantOdpowiedzi;
     }
+    
+    public String toString() {
+        return wariantOdpowiedzi.toString();
+    }
 
 }

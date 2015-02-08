@@ -24,5 +24,8 @@ public class OdpowiedzPytanieOtwarte extends Odpowiedz {
         this.tresc = tresc;
     }
 
+    public String toString() {
+        return tresc;
+    }
 
 }
