@@ -10,10 +10,10 @@
 	</tr>
 	</thead>
 	<tbody>
-	<c:if test="${param.success eq true}">
+	<c:if test="${success eq true}">
 		<div class="alert alert-success alert-dismissible fade in" role="alert">
 	     	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-	     	Dziękujemy za wypełnienie ankiety ${ankietaAnkietowanego.id} !
+	     	Dziękujemy za wypełnienie ankiety!
 	    </div>
 	</c:if>
 	

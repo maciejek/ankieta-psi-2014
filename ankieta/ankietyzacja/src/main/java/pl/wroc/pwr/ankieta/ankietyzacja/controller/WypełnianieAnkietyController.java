@@ -49,8 +49,8 @@ public class Wype³nianieAnkietyController {
         return "wypelnianieListaAnkiet";
     }
     
-    @RequestMapping(value="/wypelnianieListaAnkiet/ankietaWypelniona", method = RequestMethod.POST)
-    public String wypelnianieAnkiety(@Valid @ModelAttribute("wypelniona") WypelnianieAnkietyModel wypelniona, BindingResult result) {
+    @RequestMapping(value="/wypelnianieListaAnkiet/ankietaWypelniona", method = RequestMethod.POST, produces = "text/html")
+	public String saveAnkietaAnkietowanego(@Valid @ModelAttribute("wypelniona") WypelnianieAnkietyModel wypelniona, BindingResult result, Model model) {
         System.out.println(wypelniona);
         System.out.println(wypelniona.getAnkietaId());
         Ankieta ankieta = ankietaService.findAnkieta(wypelniona.getAnkietaId());
@@ -58,20 +58,8 @@ public class Wype³nianieAnkietyController {
         AnkietaAnkietowanego ankietaAnkietowanego = ankietaAnkietowanegoService.createAnkietaAnkietowanego(wypelniona, ankieta, ankietowany);
         ankietaAnkietowanego = ankietaAnkietowanegoService.save(ankietaAnkietowanego);
         ankietowany.addAnkietaAnkietowanego(ankietaAnkietowanego);
-        //return "redirect:/wypelnianieListaAnkiet.html?success=true";
-       // return "/wypelnianieListaAnkiet2/"+ankietaAnkietowanego.getId();
-        return "redirect:/wypelnianieListaAnkiet2/"+ankietaAnkietowanego.getId()+".html";
-
-    }
-    
-    @RequestMapping("/wypelnianieListaAnkiet2/{idAnkietyAnkietowanego}")
-    public String wypelnianieDone(Model model, @PathVariable int idAnkietyAnkietowanego) {
-        model.addAttribute("ankietaAnkietowanego", ankietaAnkietowanegoService.findAnkietaAnkietowanego(idAnkietyAnkietowanego));
-        return "redirect:/wypelnianieListaAnkiet.html?success=true";
-    }
-
-	public String saveAnkietaAnkietowanego(WypelnianieAnkietyModel model) {
-	    return "";
+        model.addAttribute("success", true);
+        return "wypelnianieListaAnkiet";
 	}
 
 }

@@ -70,5 +70,9 @@ public class AnkietaAnkietowanego {
     public void setAnkieta(Ankieta ankieta) {
         this.ankieta = ankieta;
     }
+    
+    public String toString() {
+        return odpowiedzi.toString();
+    }
 
 }

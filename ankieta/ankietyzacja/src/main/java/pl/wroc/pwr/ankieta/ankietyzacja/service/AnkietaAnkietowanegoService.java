@@ -15,7 +15,6 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.Odpowiedz;
 import pl.wroc.pwr.ankieta.ankietaService.entity.OdpowiedzPytanieOtwarte;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Otwarte;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
-import pl.wroc.pwr.ankieta.ankietaService.entity.Uzytkownik;
 import pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi;
 import pl.wroc.pwr.ankieta.ankietaService.entity.WybranaOdpowiedz;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
@@ -63,7 +62,7 @@ public class AnkietaAnkietowanegoService {
 	    Iterator<WariantOdpowiedzi> wariantyIterator = warianty.iterator();
 	    while(wariantyIterator.hasNext()) {
 	        WariantOdpowiedzi wariant = wariantyIterator.next();
-	        if(wariant.equals(tresc)) {
+	        if(wariant.getTresc().equals(tresc)) {
 	            return wariant;
 	        }
 	    }
@@ -72,6 +71,10 @@ public class AnkietaAnkietowanegoService {
 	
 	public AnkietaAnkietowanego findAnkietaAnkietowanego(int id) {
 	    return ankietaAnkietowanegoRepository.findOne(id);
+	}
+	
+	public List<AnkietaAnkietowanego> findAll() {
+	    return ankietaAnkietowanegoRepository.findAll();
 	}
 
 }
