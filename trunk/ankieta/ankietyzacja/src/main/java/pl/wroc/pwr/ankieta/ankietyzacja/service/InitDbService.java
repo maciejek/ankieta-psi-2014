@@ -180,9 +180,22 @@ public class InitDbService {
             pytanie2.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie2, false, "wariant3"));
             pytanie2.setAnkieta(ankieta1);
             
+            Zamkniête pytanie3 = new Zamkniête();
+            pytanie3.setTresc("tresc2");
+            pytanie3.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie3, true, "1"));
+            pytanie3.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie3, true, "2"));
+            pytanie3.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie3, true, "3"));
+            pytanie3.setAnkieta(ankieta1);
+            
+            Pytanie pytanie4 = new Otwarte();
+            pytanie4.setTresc("tresc4");
+            pytanie4.setAnkieta(ankieta1);
+            
             ArrayList<Pytanie> pytania = new ArrayList<Pytanie>();
             pytania.add(pytanie1);
             pytania.add(pytanie2);
+            pytania.add(pytanie3);
+            pytania.add(pytanie4);
             ankieta1.setPytania(pytania);
             
             ankietaRepository.save(ankieta1);
