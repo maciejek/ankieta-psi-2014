@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.NamedQuery;
+
 @Entity
 public class Zajecia {
     
@@ -27,7 +29,7 @@ public class Zajecia {
                     nullable = false, updatable = false) })
 	private Collection<Ankietowany> ankietowani;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinTable(name = "Zajecia_Nauczyciel", joinColumns = { 
             @JoinColumn(name = "zajecia_id", nullable = false, updatable = false) }, 
             inverseJoinColumns = { @JoinColumn(name = "nauczyciel_id", 
@@ -110,5 +112,16 @@ public class Zajecia {
     public void setGodzinaZakonczenia(String godzinaZakonczenia) {
         this.godzinaZakonczenia = godzinaZakonczenia;
     }
+    
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(getDzienTygodnia().toString());
+        builder.append(" ");
+        builder.append(getGodzinaRozpoczecia());
+        builder.append("-");
+        builder.append(getGodzinaZakonczenia());
+        return  builder.toString();
+    }
+    
 
 }
