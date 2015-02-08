@@ -18,4 +18,20 @@ public abstract class Odpowiedz {
     @JoinColumn(name = "pytanie_id", nullable = false)
 	private Pytanie pytanie;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Pytanie getPytanie() {
+        return pytanie;
+    }
+
+    public void setPytanie(Pytanie pytanie) {
+        this.pytanie = pytanie;
+    }
+
 }

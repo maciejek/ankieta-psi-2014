@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 public class WybranaOdpowiedz extends Odpowiedz {
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "wariant_id", nullable = false)
+    @JoinColumn(name = "wariant_id", nullable = true)//TODO:maciek - false zmienione na true
 	private WariantOdpowiedzi wariantOdpowiedzi;
 
 }

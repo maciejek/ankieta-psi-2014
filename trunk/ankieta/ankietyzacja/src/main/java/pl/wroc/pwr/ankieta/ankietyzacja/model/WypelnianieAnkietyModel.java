@@ -3,15 +3,20 @@ package pl.wroc.pwr.ankieta.ankietyzacja.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta;
+
 public class WypelnianieAnkietyModel {
 
 	private List<String> odpowiedziOtwarte;
 
 	private List<String> odpowiedziZamkniete;  //TODO:Intidzery
 	
+	private Integer ankietaId;
+	
 	public WypelnianieAnkietyModel() {
 	    odpowiedziOtwarte = new ArrayList<String>();
 	    odpowiedziZamkniete = new ArrayList<String>();
+	    ankietaId = -1;
 	}
 
     public List<String> getOdpowiedziOtwarte() {
@@ -34,4 +39,11 @@ public class WypelnianieAnkietyModel {
         return "O:" + odpowiedziOtwarte.toString() + "Z:" + odpowiedziZamkniete.toString();
     }
 
+    public Integer getAnkietaId() {
+        return ankietaId;
+    }
+
+    public void setAnkietaId(Integer ankietaId) {
+        this.ankietaId = ankietaId;
+    }
 }

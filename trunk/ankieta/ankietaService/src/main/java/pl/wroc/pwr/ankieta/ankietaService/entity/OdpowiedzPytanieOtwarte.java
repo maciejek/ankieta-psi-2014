@@ -7,4 +7,22 @@ public class OdpowiedzPytanieOtwarte extends Odpowiedz {
 
 	private String tresc;
 
+    public String getTresc() {
+        return tresc;
+    }
+    
+    public OdpowiedzPytanieOtwarte() {
+        super();
+    }
+    
+    public OdpowiedzPytanieOtwarte(String tresc) {
+        super();
+        this.tresc = tresc;
+    }
+
+    public void setTresc(String tresc) {
+        this.tresc = tresc;
+    }
+
+
 }

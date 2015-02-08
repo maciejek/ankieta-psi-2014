@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Ankietowany;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Audytor;
 import pl.wroc.pwr.ankieta.ankietaService.entity.DzienTygodnia;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Kurs;
@@ -22,6 +23,7 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zajecia;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaRepository;
+import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietowanyRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AudytorRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.KursRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.NauczycielRepository;
@@ -38,6 +40,9 @@ public class InitDbService {
     
     @Autowired
     private AudytorRepository audytorRepository;
+    
+    @Autowired
+    private AnkietowanyRepository ankietowanyRepository;
     
     @Autowired
     private NauczycielRepository nauczycielRepository;
@@ -65,6 +70,11 @@ public class InitDbService {
             audytor1.setEmail("jan.kowalski@pwr.edu.pl");
             audytor1.setHaslo(encoder.encode("qaz"));
             audytorRepository.save(audytor1);
+            
+            Ankietowany ankietowany1 = new Ankietowany();
+            ankietowany1.setEmail("ankietowany@pwr.wroc.pl");
+            ankietowany1.setHaslo(encoder.encode("ankietowany"));
+            ankietowanyRepository.save(ankietowany1);
             
             Nauczyciel nauczyciel1 = new Nauczyciel();
             nauczyciel1.setEmail("bogumila.hnatkowska@pwr.edu.pl");
