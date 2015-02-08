@@ -78,5 +78,9 @@ public class WariantOdpowiedzi {
     public void setTresc(String tresc) {
         this.tresc = tresc;
     }
+    
+    public String toString() {
+        return tresc;
+    }
 
 }
