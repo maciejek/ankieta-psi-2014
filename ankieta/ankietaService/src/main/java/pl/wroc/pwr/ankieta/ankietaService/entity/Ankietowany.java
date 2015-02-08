@@ -24,8 +24,7 @@ public class Ankietowany extends Uzytkownik {
         return ankietaAnkietowanego;
     }
 
-    public void setAnkietaAnkietowanego(
-            Collection<AnkietaAnkietowanego> ankietaAnkietowanego) {
+    public void setAnkietaAnkietowanego(Collection<AnkietaAnkietowanego> ankietaAnkietowanego) {
         this.ankietaAnkietowanego = ankietaAnkietowanego;
     }
 
@@ -48,5 +47,7 @@ public class Ankietowany extends Uzytkownik {
     public void addAnkietaAnkietowanego(AnkietaAnkietowanego wypelnionaAnkieta) {
         this.ankietaAnkietowanego.add(wypelnionaAnkieta);
     }
+    
+    
 
 }

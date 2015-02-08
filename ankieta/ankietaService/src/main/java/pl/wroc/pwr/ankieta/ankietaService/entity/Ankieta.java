@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
 public class Ankieta {
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "audytor_id", nullable = false)
+    @JoinColumn(name = "audytor_id", nullable = true)
 	private Audytor audytor;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -25,20 +25,20 @@ public class Ankieta {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "Ankieta_Ankietowany", joinColumns = { 
-            @JoinColumn(name = "ankieta_id", nullable = false, updatable = false) }, 
+            @JoinColumn(name = "ankieta_id", nullable = true, updatable = false) }, 
             inverseJoinColumns = { @JoinColumn(name = "ankietowany_id", 
-                    nullable = false, updatable = false) })
+                    nullable = true, updatable = false) })
 	private Collection<Ankietowany> grupaAnkietowanych;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "zajecia_id", nullable = false)
+    @JoinColumn(name = "zajecia_id", nullable = true)
 	private Zajecia zajêcia;
 
 	@OneToMany
 	@JoinTable(name = "Ankieta_Zainteresowany", joinColumns = { 
-            @JoinColumn(name = "ankieta_id", nullable = false, updatable = false) }, 
+            @JoinColumn(name = "ankieta_id", nullable = true, updatable = false) }, 
             inverseJoinColumns = { @JoinColumn(name = "zainteresowany_id", 
-                    nullable = false, updatable = false) })
+                    nullable = true, updatable = false) })
 	private Collection<Uzytkownik> zainteresowani;
 	
 	@OneToMany(targetEntity=AnkietaAnkietowanego.class, mappedBy="ankieta", fetch=FetchType.EAGER, cascade=CascadeType.ALL)

@@ -15,6 +15,11 @@
 	</properties>
 	<dependencies>
 	<dependency>
+		<groupId>org.json</groupId>
+		<artifactId>json</artifactId>
+		<version>20141113</version>
+	</dependency>
+	<dependency>
 		<groupId>pl.wroc.pwr.ankieta</groupId>
 		<artifactId>analizaWynikow</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
@@ -87,7 +92,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.7.1.RELEASE</version>
+			<version>1.7.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -243,6 +248,13 @@
 			<version>${org.springframework.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.4.2</version>
+		</dependency>
+
 
 	</dependencies>
 

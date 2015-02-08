@@ -93,3 +93,74 @@ label.error {
 .nav-subtitle {
 	font-size: 12px;
 }
+
+.nav.nav-pills {
+	margin-bottom: 20px;
+}
+
+.control-label {
+	line-height: 34px;
+}
+
+.form-group {
+	overflow: hidden;
+}
+
+.students-list {
+	margin-bottom: 0;
+}
+
+.students-list li {
+	padding: 4px 15px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+.students-list .btn {
+	width: 100px;
+	float: right;
+}
+
+.form-control.inline {
+	display: inline-block;
+	width: auto;
+}
+
+.question-radio, .checkbox {
+	margin-right: 6px!important;
+	display: inline-block;
+}
+
+.radio-label {
+	margin-right: 30px;
+}
+
+.checkbox-label {
+	margin-right: 5px;
+}
+
+.answer-count {
+	display: inline-block;
+	width: 70px;
+}
+
+.answer-variant {
+	width: 70%;
+	display: inline;
+}
+
+.remove-variant {
+	font-size: 25px;
+	display: inline-block;
+	vertical-align: -6px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.form-group {
+	margin-bottom: 10px;
+}
+
+.question-area {
+	margin-top: 30px;
+}

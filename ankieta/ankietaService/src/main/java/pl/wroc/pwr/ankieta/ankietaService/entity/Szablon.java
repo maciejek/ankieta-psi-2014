@@ -21,4 +21,30 @@ public class Szablon {
 
 	private String nazwa;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Collection<Pytanie> getPytaniaSkladowe() {
+        return pytaniaSkladowe;
+    }
+
+    public void setPytaniaSkladowe(Collection<Pytanie> pytaniaSkladowe) {
+        this.pytaniaSkladowe = pytaniaSkladowe;
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+	
+	
+
 }

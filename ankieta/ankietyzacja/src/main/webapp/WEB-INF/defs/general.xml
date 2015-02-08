@@ -21,6 +21,14 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/NowaAnkietaPage.jsp" />
 		<put-attribute name="current" value="nowaAnkieta"></put-attribute>
 	</definition>
+	<definition name="dodanaAnkieta" extends="common">
+		<put-attribute name="title" value="Sukces" />
+		<put-attribute name="body" value="/WEB-INF/jsp/SuccessPage.jsp" />
+		<put-attribute name="current" value="sukces"></put-attribute>
+	</definition>
+	<definition name="krok1" template="/WEB-INF/jsp/krok1.jsp"/>
+	<definition name="krok2" template="/WEB-INF/jsp/krok2.jsp"/>
+	<definition name="krok3" template="/WEB-INF/jsp/krok3.jsp"/>
 	<definition name="wypelnianieListaAnkiet" extends="common">
 		<put-attribute name="title" value="Wybor ankiety" />
 		<put-attribute name="body" value="/WEB-INF/jsp/WypelnianieListaAnkiet.jsp" />

@@ -9,14 +9,11 @@
 <title><tiles:getAsString name="title" /></title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/main.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/createPool.js"></script>
 </head>
 
 <body>
@@ -43,7 +40,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/"></spring:url>'>Home</a></li>
-					<security:authorize access="hasRole('Audytor')"><li class="${current == 'nowaAnkieta' ? 'active' : ''}"><a href="<spring:url value="/nowaAnkieta.html" />">Nowa ankieta</a></li></security:authorize>
+					<security:authorize access="hasRole('Audytor')"><li class="${current == 'nowaAnkieta' ? 'active' : ''}"><a href="<spring:url value="ankieta/nowaAnkieta.html" />">Nowa ankieta</a></li></security:authorize>
 					<security:authorize access="hasRole('Ankietowany')"><li class="${current == 'wypelnianieAnkiety' ? 'active' : ''}"><a href="<spring:url value="/wypelnianieListaAnkiet.html" />">Wypelnianie ankiety</a></li></security:authorize>
 				</ul>
 				<ul class="nav navbar-nav navbar-right my-header">
