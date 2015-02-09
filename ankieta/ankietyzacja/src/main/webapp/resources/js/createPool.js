@@ -77,14 +77,13 @@ function addStudentsGroupToModel() {
 	var students = {
 			grupa: []
 		};
-	console.log($('.students-list li'));
+	
 	$('.students-list li').each(function() {
 		students.grupa.push({
 			id : $(this).data("id")
 		});
 	});
-	console.log(students);
-	console.log(JSON.stringify(students));
+
 	$('#studentsGroup').val(JSON.stringify(students));
 }
 
@@ -186,41 +185,40 @@ function saveQuestionsAsJSON() {
 		answerVariants = question.find('.answer-variant');
 			
 		json = "{";
-		json += "tresc : " + questionText + ", ";
-		json += "czyOtwarte : " + isOpened + ", ";
+		json += '"tresc" : "' + questionText + '", ';
+		json += '"czyOtwarte" : ' + isOpened + ', ';
 		
 		if (isOpened) {
 			
-			json += "czyLiczbowy : false, ";
-			json += "warianty : []";
+			json += '"czyLiczbowy" : false, ';
+			json += '"warianty" : []';
 			
 		} else {
 			
-			json += "czyLiczbowy : " + numericAnswers + ", ";
-			json += "warianty : [";
+			json += '"czyLiczbowy" : ' + numericAnswers + ', ';
+			json += '"warianty" : [';
 			
 			if (numericAnswers) {
 				
 				for (j = 0; j < numericAnswersCount; j++) {
 				
-					json += "{ tresc : '" + (j + 1) + "' }";
-					json += j < numericAnswersCount - 1 ? ", " : "";
+					json += '{ "tresc" : "' + (j + 1) + '" }';
+					json += j < numericAnswersCount - 1 ? ', ' : '';
 				}
 			} else {
 				
 				for (j = 0; j < answerVariants.length; j++) {
 					
-					json += "{ tresc : " + answerVariants.eq(j).val() + " }";
-					json += j < answerVariants.length - 1 ? ", " : "";
+					json += '{ "tresc" : "' + answerVariants.eq(j).val() + '" }';
+					json += j < answerVariants.length - 1 ? ', ' : '';
 				}
 			}
 			
-			json += "]";
+			json += ']';
 		} 
 		
-		json += "}";
+		json += '}';
 		
 		question.find('.question-hidden').val(json);
-		console.log(json);
 	}
 }
