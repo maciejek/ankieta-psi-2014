@@ -238,52 +238,80 @@ public class InitDbService {
             ankietowany1.setZajecia(zajeciaAnkietowanego1);
             ankietowanyRepository.save(ankietowany1);
             
+            ArrayList<Zajecia> zajeciaAnkietowanego2 = new ArrayList<Zajecia>();
+            zajeciaAnkietowanego2.add(zajecia2);
+            
             Ankietowany ankietowany2 = new Ankietowany();
             ankietowany2.setEmail("183614@student.pwr.edu.pl");
             ankietowany2.setHaslo(encoder.encode("12345"));
-            ankietowany2.setZajecia(zajeciaAnkietowanego1);
+            ankietowany2.setZajecia(zajeciaAnkietowanego2);
             ankietowanyRepository.save(ankietowany2);
+            
+            ArrayList<Zajecia> zajeciaAnkietowanego3 = new ArrayList<Zajecia>();
+            zajeciaAnkietowanego3.add(zajecia3);
             
             Ankietowany ankietowany3 = new Ankietowany();
             ankietowany3.setEmail("183695@student.pwr.edu.pl");
             ankietowany3.setHaslo(encoder.encode("12345"));
-            ankietowany3.setZajecia(zajeciaAnkietowanego1);
+            ankietowany3.setZajecia(zajeciaAnkietowanego3);
             ankietowanyRepository.save(ankietowany3);
             
             ArrayList<Ankietowany> ankietowaniZajec1 = new ArrayList<Ankietowany>();
             ankietowaniZajec1.add(ankietowany1);
-            ankietowaniZajec1.add(ankietowany2);
-            ankietowaniZajec1.add(ankietowany3);
             zajecia1.setAnkietowani(ankietowaniZajec1);
             zajeciaRepository.save(zajecia1);
             
-            ArrayList<Zajecia> zajeciaAnkietowanego2 = new ArrayList<Zajecia>();
-            zajeciaAnkietowanego2.add(zajecia2);
+            ArrayList<Ankietowany> ankietowaniZajec2 = new ArrayList<Ankietowany>();
+            ankietowaniZajec2.add(ankietowany2);
+            zajecia2.setAnkietowani(ankietowaniZajec2);
+            zajeciaRepository.save(zajecia2);
+            
+            ArrayList<Ankietowany> ankietowaniZajec3 = new ArrayList<Ankietowany>();
+            ankietowaniZajec3.add(ankietowany3);
+            zajecia3.setAnkietowani(ankietowaniZajec3);
+            zajeciaRepository.save(zajecia3);
+            
+            ArrayList<Zajecia> zajeciaAnkietowanego4 = new ArrayList<Zajecia>();
+            zajeciaAnkietowanego4.add(zajecia4);
             
             Ankietowany ankietowany4 = new Ankietowany();
             ankietowany4.setEmail("183727@student.pwr.edu.pl");
             ankietowany4.setHaslo(encoder.encode("12345"));
-            ankietowany4.setZajecia(zajeciaAnkietowanego2);
+            ankietowany4.setZajecia(zajeciaAnkietowanego4);
             ankietowanyRepository.save(ankietowany4);
+            
+            ArrayList<Zajecia> zajeciaAnkietowanego5 = new ArrayList<Zajecia>();
+            zajeciaAnkietowanego5.add(zajecia5);
             
             Ankietowany ankietowany5 = new Ankietowany();
             ankietowany5.setEmail("183681@student.pwr.edu.pl");
             ankietowany5.setHaslo(encoder.encode("12345"));
-            ankietowany5.setZajecia(zajeciaAnkietowanego2);
+            ankietowany5.setZajecia(zajeciaAnkietowanego5);
             ankietowanyRepository.save(ankietowany5);
+            
+            ArrayList<Zajecia> zajeciaAnkietowanego6 = new ArrayList<Zajecia>();
+            zajeciaAnkietowanego6.add(zajecia6);
             
             Ankietowany ankietowany6 = new Ankietowany();
             ankietowany6.setEmail("183619@student.pwr.edu.pl");
             ankietowany6.setHaslo(encoder.encode("12345"));
-            ankietowany6.setZajecia(zajeciaAnkietowanego2);
+            ankietowany6.setZajecia(zajeciaAnkietowanego6);
             ankietowanyRepository.save(ankietowany6);
             
-            ArrayList<Ankietowany> ankietowaniZajec2 = new ArrayList<Ankietowany>();
-            ankietowaniZajec2.add(ankietowany4);
-            ankietowaniZajec2.add(ankietowany5);
-            ankietowaniZajec2.add(ankietowany6);
-            zajecia2.setAnkietowani(ankietowaniZajec2);
-            zajeciaRepository.save(zajecia2);
+            ArrayList<Ankietowany> ankietowaniZajec4 = new ArrayList<Ankietowany>();
+            ankietowaniZajec4.add(ankietowany4);
+            zajecia4.setAnkietowani(ankietowaniZajec4);
+            zajeciaRepository.save(zajecia4);
+            
+            ArrayList<Ankietowany> ankietowaniZajec5 = new ArrayList<Ankietowany>();
+            ankietowaniZajec5.add(ankietowany5);
+            zajecia5.setAnkietowani(ankietowaniZajec5);
+            zajeciaRepository.save(zajecia5);
+            
+            ArrayList<Ankietowany> ankietowaniZajec6 = new ArrayList<Ankietowany>();
+            ankietowaniZajec6.add(ankietowany6);
+            zajecia6.setAnkietowani(ankietowaniZajec6);
+            zajeciaRepository.save(zajecia6);
             
             Ankietowany ankietowany7 = new Ankietowany();
             ankietowany7.setEmail("ankietowany@pwr.wroc.pl");
