@@ -20,10 +20,10 @@ public class WariantOdpowiedzi {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pytanie_id", nullable = false)
-	private Zamkniête pytanieZamkniete;
+	private Zamkniete pytanieZamkniete;
     
     @OneToMany(mappedBy = "wariantOdpowiedzi", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Collection<WybranaOdpowiedz> wybraneOdpowiedzi; //TODO: MACIEK - CO TO JEST?
+    private Collection<WybranaOdpowiedz> wybraneOdpowiedzi;
 
 	private Boolean czyLiczbowy;
 
@@ -31,7 +31,7 @@ public class WariantOdpowiedzi {
 	
 	public WariantOdpowiedzi() {}
 
-    public WariantOdpowiedzi(Zamkniête pytanieZamkniete,
+    public WariantOdpowiedzi(Zamkniete pytanieZamkniete,
             Boolean czyLiczbowy, String tresc) {
         super();
         this.pytanieZamkniete = pytanieZamkniete;
@@ -47,11 +47,11 @@ public class WariantOdpowiedzi {
         this.id = id;
     }
 
-    public Zamkniête getPytanieZamkniete() {
+    public Zamkniete getPytanieZamkniete() {
         return pytanieZamkniete;
     }
 
-    public void setPytanieZamkniete(Zamkniête pytanieZamkniete) {
+    public void setPytanieZamkniete(Zamkniete pytanieZamkniete) {
         this.pytanieZamkniete = pytanieZamkniete;
     }
 

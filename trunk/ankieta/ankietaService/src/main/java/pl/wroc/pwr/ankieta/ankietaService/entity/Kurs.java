@@ -1,6 +1,6 @@
 package pl.wroc.pwr.ankieta.ankietaService.entity;
 
-import java.util.*;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class Kurs {
     private Integer id;
     
     @OneToMany(targetEntity=Zajecia.class, mappedBy="kurs", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Collection<Zajecia> zajêcia;
+	private Collection<Zajecia> zajecia;
 
 	private String nazwa;
 
@@ -29,12 +29,12 @@ public class Kurs {
         this.id = id;
     }
 
-    public Collection<Zajecia> getZajêcia() {
-        return zajêcia;
+    public Collection<Zajecia> getZajecia() {
+        return zajecia;
     }
 
-    public void setZajêcia(Collection<Zajecia> zajêcia) {
-        this.zajêcia = zajêcia;
+    public void setZajecia(Collection<Zajecia> zajecia) {
+        this.zajecia = zajecia;
     }
 
     public String getNazwa() {

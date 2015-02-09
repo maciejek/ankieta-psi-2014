@@ -36,7 +36,7 @@ public class Zajecia {
                     nullable = false, updatable = false) })
 	private Collection<Nauczyciel> nauczyciele;
 
-	@OneToMany(mappedBy = "zajêcia", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "zajecia", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Collection<Ankieta> ankiety;
 
 	@ManyToOne(fetch = FetchType.EAGER)

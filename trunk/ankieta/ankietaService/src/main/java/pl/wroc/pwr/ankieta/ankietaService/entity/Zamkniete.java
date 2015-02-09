@@ -8,7 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Zamkniête extends Pytanie {
+public class Zamkniete extends Pytanie {
 
     @OneToMany(mappedBy = "pytanieZamkniete", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Collection<WariantOdpowiedzi> wariantyOdpowiedzi = new LinkedList<WariantOdpowiedzi>();

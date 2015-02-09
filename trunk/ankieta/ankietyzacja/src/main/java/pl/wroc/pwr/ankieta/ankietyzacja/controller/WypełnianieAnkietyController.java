@@ -1,5 +1,7 @@
 package pl.wroc.pwr.ankieta.ankietyzacja.controller;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,14 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.wroc.pwr.ankieta.ankietaService.entity.Ankieta;
 import pl.wroc.pwr.ankieta.ankietaService.entity.AnkietaAnkietowanego;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Ankietowany;
-import pl.wroc.pwr.ankieta.ankietaService.entity.Uzytkownik;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.WypelnianieAnkietyModel;
 import pl.wroc.pwr.ankieta.ankietyzacja.service.AnkietaAnkietowanegoService;
 import pl.wroc.pwr.ankieta.ankietyzacja.service.AnkietaService;
@@ -36,12 +37,13 @@ public class Wype³nianieAnkietyController {
     public WypelnianieAnkietyModel construct() {
         return new WypelnianieAnkietyModel();
     }
-
-    @RequestMapping("/wypelnianieListaAnkiet/{idAnkiety}")
-	public String loadAnkieta(Model model, @PathVariable int idAnkiety) {
-        model.addAttribute("ankieta", ankietaService.findAnkieta(idAnkiety));
-		return "wypelnij";
-	}
+    
+    @RequestMapping(value="/wypelnianieListaAnkiet", method=RequestMethod.POST)
+    public String loadAnkieta(Model model, @RequestParam(value = "idAnkiety", required = true) String idAnkiety, Principal principal) {
+        Ankieta ankieta = ankietaService.findAnkieta(Integer.parseInt(idAnkiety));
+        model.addAttribute("ankieta", ankieta);
+        return "wypelnij";
+    }    
     
     @RequestMapping("/wypelnianieListaAnkiet")
     public String wypelnianieAnkiety(Model model) {
@@ -49,7 +51,7 @@ public class Wype³nianieAnkietyController {
         return "wypelnianieListaAnkiet";
     }
     
-    @RequestMapping(value="/wypelnianieListaAnkiet/ankietaWypelniona", method = RequestMethod.POST, produces = "text/html")
+    @RequestMapping(value="/ankietaWypelniona", method = RequestMethod.POST, produces = "text/html")
 	public String saveAnkietaAnkietowanego(@Valid @ModelAttribute("wypelniona") WypelnianieAnkietyModel wypelniona, BindingResult result, Model model) {
         System.out.println(wypelniona);
         System.out.println(wypelniona.getAnkietaId());
@@ -59,6 +61,7 @@ public class Wype³nianieAnkietyController {
         ankietaAnkietowanego = ankietaAnkietowanegoService.save(ankietaAnkietowanego);
         ankietowany.addAnkietaAnkietowanego(ankietaAnkietowanego);
         model.addAttribute("success", true);
+        model.addAttribute("ankiety", ankietaService.findAllAvailableForAnkietowany((Ankietowany)uzytkownikService.getLoggedUser()));
         return "wypelnianieListaAnkiet";
 	}
 

@@ -17,7 +17,7 @@
 		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Szablon</class>
 		<class>pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi</class>
 		<class>pl.wroc.pwr.ankieta.ankietaService.entity.WybranaOdpowiedz</class>
-		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Zamknięte</class>
+		<class>pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniete</class>
 		<properties>
 		    <property name="hibernate.archive.autodetection" value="class, hbm"/>
 			<property name="hibernate.connection.charSet" value="UTF-8"/>

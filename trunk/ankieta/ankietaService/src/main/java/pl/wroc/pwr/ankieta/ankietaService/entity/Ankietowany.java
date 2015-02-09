@@ -18,7 +18,7 @@ public class Ankietowany extends Uzytkownik {
     private Collection<Ankieta> ankiety;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "ankietowani")
-	private Collection<Zajecia> zajêcia;
+	private Collection<Zajecia> zajecia;
 
     public Collection<AnkietaAnkietowanego> getAnkietaAnkietowanego() {
         return ankietaAnkietowanego;
@@ -36,12 +36,12 @@ public class Ankietowany extends Uzytkownik {
         this.ankiety = ankiety;
     }
 
-    public Collection<Zajecia> getZajêcia() {
-        return zajêcia;
+    public Collection<Zajecia> getZajecia() {
+        return zajecia;
     }
 
-    public void setZajêcia(Collection<Zajecia> zajêcia) {
-        this.zajêcia = zajêcia;
+    public void setZajecia(Collection<Zajecia> zajecia) {
+        this.zajecia = zajecia;
     }
     
     public void addAnkietaAnkietowanego(AnkietaAnkietowanego wypelnionaAnkieta) {
