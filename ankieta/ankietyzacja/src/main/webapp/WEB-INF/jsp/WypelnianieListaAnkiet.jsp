@@ -6,7 +6,7 @@
 <table class="table table-bordered table-hover">
 	<thead>
 	<tr>
-	<th>Ankiety dostępne do wypełnienia</th>
+	<th colspan="3">Ankiety dostępne do wypełnienia</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -15,15 +15,23 @@
 	     	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 	     	Dziękujemy za wypełnienie ankiety!
 	    </div>
+	    
 	</c:if>
 	
 		<c:forEach items="${ankiety}" var="ankieta">
 			<tr>
 				<td>
-					<a href="<spring:url value="/wypelnianieListaAnkiet/${ankieta.id}.html"/>">
-						${ankieta.tytul}
-					</a>
+					${ankieta.tytul}
 				</td>
+				<td>
+					Termin mija: ${ankieta.terminZakonczenia}
+				</td>
+				<td>
+				<form:form action="wypelnianieListaAnkiet.html">
+					<input type="hidden" name="idAnkiety" id="idAnkiety" class="form-control" placeholder="Jira server URL"
+						required value="${ankieta.id}"> 
+						<input class="btn btn-sm" type="submit" value="Wypełnij teraz">
+				</form:form>
 			</tr>
 		</c:forEach>
 	</tbody>

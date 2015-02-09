@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Szablon;
-import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
-import pl.wroc.pwr.ankieta.ankietaService.repository.PytanieRepository;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniete;
 import pl.wroc.pwr.ankieta.ankietaService.repository.ZamknieteRepository;
 
 @Service
@@ -17,7 +16,7 @@ public class ZamknieteService {
     @Autowired
 	private ZamknieteRepository zamknieteRepository;
     
-    public Zamkniête save(Zamkniête zamkniete) {
+    public Zamkniete save(Zamkniete zamkniete) {
         return zamknieteRepository.save(zamkniete);
     }
 

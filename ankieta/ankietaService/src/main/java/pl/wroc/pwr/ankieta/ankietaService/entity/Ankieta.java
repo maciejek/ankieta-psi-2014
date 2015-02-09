@@ -32,7 +32,7 @@ public class Ankieta {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "zajecia_id", nullable = true)
-	private Zajecia zajêcia;
+	private Zajecia zajecia;
 
 	@OneToMany
 	@JoinTable(name = "Ankieta_Zainteresowany", joinColumns = { 
@@ -80,12 +80,12 @@ public class Ankieta {
         this.grupaAnkietowanych = grupaAnkietowanych;
     }
 
-    public Zajecia getZajêcia() {
-        return zajêcia;
+    public Zajecia getZajecia() {
+        return zajecia;
     }
 
-    public void setZajêcia(Zajecia zajêcia) {
-        this.zajêcia = zajêcia;
+    public void setZajecia(Zajecia zajecia) {
+        this.zajecia = zajecia;
     }
 
     public Collection<Uzytkownik> getZainteresowani() {

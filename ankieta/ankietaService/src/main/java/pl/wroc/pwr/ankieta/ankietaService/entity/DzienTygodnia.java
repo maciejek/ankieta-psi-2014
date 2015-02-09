@@ -2,11 +2,11 @@ package pl.wroc.pwr.ankieta.ankietaService.entity;
 
 public enum DzienTygodnia {
     
-	Poniedzia³ek("pn"), 
+	Poniedzialek("pn"), 
 	Wtorek("wt"), 
-	Œroda("œr"), 
+	Sroda("sr"), 
 	Czwartek("cz"), 
-	Pi¹tek("pt"), 
+	Piatek("pt"), 
 	Sobota("sb"), 
 	Niedziela("nd");
 	

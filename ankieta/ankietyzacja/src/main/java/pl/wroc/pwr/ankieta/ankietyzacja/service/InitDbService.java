@@ -22,7 +22,7 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Szablon;
 import pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zajecia;
-import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniete;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietowanyRepository;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AudytorRepository;
@@ -92,7 +92,7 @@ public class InitDbService {
             kursRepository.save(kurs2);
             
             Zajecia zajecia1 = new Zajecia();
-            zajecia1.setDzienTygodnia(DzienTygodnia.Œroda);
+            zajecia1.setDzienTygodnia(DzienTygodnia.Sroda);
             zajecia1.setGodzinaRozpoczecia("17:05");
             zajecia1.setGodzinaZakonczenia("18:45");
             zajecia1.setKurs(kurs1);
@@ -102,7 +102,7 @@ public class InitDbService {
             zajeciaRepository.save(zajecia1);
             
             Zajecia zajecia2 = new Zajecia();
-            zajecia2.setDzienTygodnia(DzienTygodnia.Œroda);
+            zajecia2.setDzienTygodnia(DzienTygodnia.Sroda);
             zajecia2.setGodzinaRozpoczecia("18:55");
             zajecia2.setGodzinaZakonczenia("20:35");
             zajecia2.setKurs(kurs1);
@@ -122,7 +122,7 @@ public class InitDbService {
             zajeciaRepository.save(zajecia3);
             
             Zajecia zajecia4 = new Zajecia();
-            zajecia4.setDzienTygodnia(DzienTygodnia.Pi¹tek);
+            zajecia4.setDzienTygodnia(DzienTygodnia.Piatek);
             zajecia4.setGodzinaRozpoczecia("07:30");
             zajecia4.setGodzinaZakonczenia("09:00");
             zajecia4.setKurs(kurs2);
@@ -132,7 +132,7 @@ public class InitDbService {
             zajeciaRepository.save(zajecia4);
             
             Zajecia zajecia5 = new Zajecia();
-            zajecia5.setDzienTygodnia(DzienTygodnia.Pi¹tek);
+            zajecia5.setDzienTygodnia(DzienTygodnia.Piatek);
             zajecia5.setGodzinaRozpoczecia("09:15");
             zajecia5.setGodzinaZakonczenia("11:00");
             zajecia5.setKurs(kurs2);
@@ -159,7 +159,7 @@ public class InitDbService {
             nauczycielRepository.save(nauczyciel2);
             
             Zajecia zajecia6 = new Zajecia();
-            zajecia6.setDzienTygodnia(DzienTygodnia.Poniedzia³ek);
+            zajecia6.setDzienTygodnia(DzienTygodnia.Poniedzialek);
             zajecia6.setGodzinaRozpoczecia("09:15");
             zajecia6.setGodzinaZakonczenia("11:00");
             zajecia6.setKurs(kurs2);
@@ -176,7 +176,7 @@ public class InitDbService {
             ArrayList<Zajecia> zajeciaKursu1 = new ArrayList<Zajecia>();
             zajeciaKursu1.add(zajecia1);
             zajeciaKursu1.add(zajecia2);
-            kurs1.setZajêcia(zajeciaKursu1);
+            kurs1.setZajecia(zajeciaKursu1);
             kursRepository.save(kurs1);
             
             ArrayList<Zajecia> zajeciaKursu2 = new ArrayList<Zajecia>();
@@ -184,31 +184,29 @@ public class InitDbService {
             zajeciaKursu2.add(zajecia4);
             zajeciaKursu2.add(zajecia5);
             zajeciaKursu2.add(zajecia6);
-            kurs2.setZajêcia(zajeciaKursu2);
+            kurs2.setZajecia(zajeciaKursu2);
             kursRepository.save(kurs2);
             
             Ankieta ankieta1 = new Ankieta();
             ankieta1.setAudytor(audytor1);
             ankieta1.setTerminRozpoczecia(new Date(1391872980000L));
-            ankieta1.setTerminZakonczenia(new Date(1523408800000L)); //2016-02-08
+            ankieta1.setTerminZakonczenia(new Date(1523408800000L));
             ankieta1.setTytul("tytul roboczy");
-            ankieta1.setZajêcia(zajecia1);
+            ankieta1.setZajecia(zajecia1);
             
-          //  ankietaRepository.save(ankieta1);
 
-            //TODO:MACIEK - CO Z TYM?
             Pytanie pytanie1 = new Otwarte();
             pytanie1.setTresc("tresc1");
             pytanie1.setAnkieta(ankieta1);
             
-            Zamkniête pytanie2 = new Zamkniête();
+            Zamkniete pytanie2 = new Zamkniete();
             pytanie2.setTresc("tresc2");
             pytanie2.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie2, false, "wariant1"));
             pytanie2.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie2, false, "wariant2"));
             pytanie2.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie2, false, "wariant3"));
             pytanie2.setAnkieta(ankieta1);
             
-            Zamkniête pytanie3 = new Zamkniête();
+            Zamkniete pytanie3 = new Zamkniete();
             pytanie3.setTresc("tresc2");
             pytanie3.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie3, true, "1"));
             pytanie3.addWariantOdpowiedzi(new WariantOdpowiedzi(pytanie3, true, "2"));
@@ -230,9 +228,6 @@ public class InitDbService {
             ankiety.add(ankieta1);
             
             ankietaRepository.save(ankieta1);
-            pytanieRepository.save(pytanie1);
-            pytanieRepository.save(pytanie2);
-       // }
             
             ArrayList<Zajecia> zajeciaAnkietowanego1 = new ArrayList<Zajecia>();
             zajeciaAnkietowanego1.add(zajecia1);
@@ -240,19 +235,19 @@ public class InitDbService {
             Ankietowany ankietowany1 = new Ankietowany();
             ankietowany1.setEmail("183680@student.pwr.edu.pl");
             ankietowany1.setHaslo(encoder.encode("12345"));
-            ankietowany1.setZajêcia(zajeciaAnkietowanego1);
+            ankietowany1.setZajecia(zajeciaAnkietowanego1);
             ankietowanyRepository.save(ankietowany1);
             
             Ankietowany ankietowany2 = new Ankietowany();
             ankietowany2.setEmail("183614@student.pwr.edu.pl");
             ankietowany2.setHaslo(encoder.encode("12345"));
-            ankietowany2.setZajêcia(zajeciaAnkietowanego1);
+            ankietowany2.setZajecia(zajeciaAnkietowanego1);
             ankietowanyRepository.save(ankietowany2);
             
             Ankietowany ankietowany3 = new Ankietowany();
             ankietowany3.setEmail("183695@student.pwr.edu.pl");
             ankietowany3.setHaslo(encoder.encode("12345"));
-            ankietowany3.setZajêcia(zajeciaAnkietowanego1);
+            ankietowany3.setZajecia(zajeciaAnkietowanego1);
             ankietowanyRepository.save(ankietowany3);
             
             ArrayList<Ankietowany> ankietowaniZajec1 = new ArrayList<Ankietowany>();
@@ -268,19 +263,19 @@ public class InitDbService {
             Ankietowany ankietowany4 = new Ankietowany();
             ankietowany4.setEmail("183727@student.pwr.edu.pl");
             ankietowany4.setHaslo(encoder.encode("12345"));
-            ankietowany4.setZajêcia(zajeciaAnkietowanego2);
+            ankietowany4.setZajecia(zajeciaAnkietowanego2);
             ankietowanyRepository.save(ankietowany4);
             
             Ankietowany ankietowany5 = new Ankietowany();
             ankietowany5.setEmail("183681@student.pwr.edu.pl");
             ankietowany5.setHaslo(encoder.encode("12345"));
-            ankietowany5.setZajêcia(zajeciaAnkietowanego2);
+            ankietowany5.setZajecia(zajeciaAnkietowanego2);
             ankietowanyRepository.save(ankietowany5);
             
             Ankietowany ankietowany6 = new Ankietowany();
             ankietowany6.setEmail("183619@student.pwr.edu.pl");
             ankietowany6.setHaslo(encoder.encode("12345"));
-            ankietowany6.setZajêcia(zajeciaAnkietowanego2);
+            ankietowany6.setZajecia(zajeciaAnkietowanego2);
             ankietowanyRepository.save(ankietowany6);
             
             ArrayList<Ankietowany> ankietowaniZajec2 = new ArrayList<Ankietowany>();
@@ -298,6 +293,7 @@ public class InitDbService {
             ArrayList<Ankietowany> grupaAnkietowanych = new ArrayList<Ankietowany>();
             grupaAnkietowanych.add(ankietowany7);
             ankieta1.setGrupaAnkietowanych(grupaAnkietowanych);
+            ankietowanyRepository.save(ankietowany7);
             
             Szablon szablon1 = new Szablon();
             szablon1.setNazwa("Przyk³adowy szablon 1");

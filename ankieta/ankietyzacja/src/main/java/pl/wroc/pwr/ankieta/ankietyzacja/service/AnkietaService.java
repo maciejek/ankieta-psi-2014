@@ -21,7 +21,7 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.Otwarte;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
 import pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Zajecia;
-import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniete;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaRepository;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.TworzenieAnkietyModel;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.AnkietaModel;
@@ -70,7 +70,7 @@ public class AnkietaService {
 	    ankieta.setTerminRozpoczecia(new Date());
 	    ankieta.setTerminZakonczenia(getEndDateMock());
 	    ankieta.setAudytor(audytor);
-	    ankieta.setZajêcia(zajecia);
+	    ankieta.setZajecia(zajecia);
 	    ankieta.setGrupaAnkietowanych(readStudentsFromJSON(model.getGrupaAnkietowanych()));
 	    
 	    List<Pytanie> pytania = new ArrayList<Pytanie>();
@@ -119,7 +119,7 @@ public class AnkietaService {
  	        
 	    } else {
 	        
-	        Zamkniête question = new Zamkniête();
+	        Zamkniete question = new Zamkniete();
 	        question.setTresc(content);
             question.setAnkieta(ankieta);
 	        

@@ -17,7 +17,7 @@ import pl.wroc.pwr.ankieta.ankietaService.entity.Otwarte;
 import pl.wroc.pwr.ankieta.ankietaService.entity.Pytanie;
 import pl.wroc.pwr.ankieta.ankietaService.entity.WariantOdpowiedzi;
 import pl.wroc.pwr.ankieta.ankietaService.entity.WybranaOdpowiedz;
-import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniête;
+import pl.wroc.pwr.ankieta.ankietaService.entity.Zamkniete;
 import pl.wroc.pwr.ankieta.ankietaService.repository.AnkietaAnkietowanegoRepository;
 import pl.wroc.pwr.ankieta.ankietyzacja.model.WypelnianieAnkietyModel;
 
@@ -48,7 +48,7 @@ public class AnkietaAnkietowanegoService {
 	            odpowiedz = new OdpowiedzPytanieOtwarte(odpowiedzi.get(i));
 	        }
 	        else {
-	            Zamkniête zamkniete = (Zamkniête)pytania.get(i);
+	            Zamkniete zamkniete = (Zamkniete)pytania.get(i);
 	            WariantOdpowiedzi wybranyWariant = getWariantWithTresc(zamkniete.getWariantyOdpowiedzi(), odpowiedzi.get(i));
 	            odpowiedz = new WybranaOdpowiedz(wybranyWariant);
 	        }
