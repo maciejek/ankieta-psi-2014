@@ -149,6 +149,7 @@
 						<li class="previous nav-step"><a href="#step2">Wstecz</a></li>
 						
 						<li style="float:right">
+							<form:input type="hidden" path="pytania" class="question-hidden" value="{}"/>
 							<input type="button" id="add-question" value="Dodaj kolejne pytanie" class="btn btn-default" onclick="addQuestion()"/>
 							<input type="submit" id="save-pool" value="Gotowe" class="btn btn-primary" />
 						</li>
