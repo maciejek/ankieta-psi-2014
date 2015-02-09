@@ -110,6 +110,7 @@ public class NowaAnkietaController {
 
 	@RequestMapping(value="/zapisz", method = RequestMethod.POST)
 	public String createAnkieta(@ModelAttribute("model") TworzenieAnkietyModel model) {
+	    model.getPytania().remove(model.getPytania().size() - 1);
 	    Ankieta ankieta = ankietaService.createAnkieta(model);
 	    ankietaService.save(ankieta);
 	    return "dodanaAnkieta";

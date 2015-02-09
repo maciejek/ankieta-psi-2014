@@ -183,42 +183,40 @@ function saveQuestionsAsJSON() {
 		numericAnswers = question.find('.checkbox').is(':checked') ? true : false;
 		numericAnswersCount = question.find('.answer-count').val();
 		answerVariants = question.find('.answer-variant');
-			
-		json = "{";
-		json += '"tresc" : "' + questionText + '", ';
-		json += '"czyOtwarte" : ' + isOpened + ', ';
+		
+		var q = {};
+		q.tresc = questionText;
+		q.czyOtwarte = isOpened;
 		
 		if (isOpened) {
 			
-			json += '"czyLiczbowy" : false, ';
-			json += '"warianty" : []';
+			q.czyLiczbowy = false;
+			q.warianty = [];
 			
 		} else {
 			
-			json += '"czyLiczbowy" : ' + numericAnswers + ', ';
-			json += '"warianty" : [';
+			q.czyLiczbowy = numericAnswers;
+			q.warianty = [];
 			
 			if (numericAnswers) {
 				
 				for (j = 0; j < numericAnswersCount; j++) {
 				
-					json += '{ "tresc" : "' + (j + 1) + '" }';
-					json += j < numericAnswersCount - 1 ? ', ' : '';
+					q.warianty.push({
+						tresc : "" + (j + 1)
+					});
 				}
 			} else {
 				
 				for (j = 0; j < answerVariants.length; j++) {
 					
-					json += '{ "tresc" : "' + answerVariants.eq(j).val() + '" }';
-					json += j < answerVariants.length - 1 ? ', ' : '';
+					q.warianty.push({
+						tresc : answerVariants.eq(j).val()
+					});
 				}
 			}
-			
-			json += ']';
 		} 
 		
-		json += '}';
-		
-		question.find('.question-hidden').val(json);
+		question.find('.question-hidden').val(JSON.stringify(q));
 	}
 }
